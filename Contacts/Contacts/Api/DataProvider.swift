@@ -29,9 +29,9 @@ class ApiResponse<T> {
     }
 }
 
-class ContactProvider {
+class ContactApi {
     static func get(_ completion: @escaping (ApiResponse<[Contact]>) -> ()) {
-        guard let data = UserDefaults.standard.data(forKey: "key") else {
+        guard let data = UserDefaults.standard.data(forKey: ContactKey) else {
             completion(ApiResponse(withError: .empty))
             return
         }
@@ -47,24 +47,34 @@ class ContactProvider {
     static func add(contact: Contact, _ completion: @escaping (ErrorType?) -> ()) {
         get({ response in
             if var response = response.result {
-                response.append(contact)
+                
+                var contactCopy = contact
+                if contactCopy.id == -1 {
+                    contactCopy.id = response.count + 1
+                }
+                
+                response.append(contactCopy)
                 let data = Coder<[Contact]>.encode(response)
                 guard data != nil else {
                     completion(.encode)
                     return
                 }
-                UserDefaults.standard.set(data, forKey: "key")
+                UserDefaults.standard.set(data, forKey: ContactKey)
                 completion(nil)
             }
             else {
                 if let error = response.error {
                     if error == .empty {
-                        let data = Coder<[Contact]>.encode([contact])
+                        
+                        var contactCopy = contact
+                        contactCopy.id = 1
+                        
+                        let data = Coder<[Contact]>.encode([contactCopy])
                         guard data != nil else {
                             completion(.encode)
                             return
                         }
-                        UserDefaults.standard.set(data, forKey: "key")
+                        UserDefaults.standard.set(data, forKey: ContactKey)
                         completion(nil)
                     }
                 }
@@ -104,7 +114,7 @@ class ContactProvider {
                     completion(.encode)
                     return
                 }
-                UserDefaults.standard.set(data, forKey: "key")
+                UserDefaults.standard.set(data, forKey: ContactKey)
                 completion(nil)
             }
             else {
@@ -116,7 +126,11 @@ class ContactProvider {
     static func replace(by id: Int, with contact: Contact, _ completion: @escaping (ErrorType?) -> ()) {
         remove(by: id, { response in
             var errorType: ErrorType? = nil
-            add(contact: contact, { addResponse in
+            
+            var contactCopy = contact
+            contactCopy.id = id
+            
+            add(contact: contactCopy, { addResponse in
                 if addResponse != nil {
                     errorType = addResponse
                 }
@@ -128,5 +142,9 @@ class ContactProvider {
             
             completion(errorType)
         })
+    }
+    
+    static func clear() {
+        UserDefaults.standard.set(nil, forKey: ContactKey)
     }
 }

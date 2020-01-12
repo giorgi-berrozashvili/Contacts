@@ -15,7 +15,6 @@ struct MobileNumber: Codable {
 
 struct Contact: Codable {
     
-    static var identityProvider: Int = 0
     var id: Int
     var firstName: String
     var lastName: String?
@@ -35,10 +34,7 @@ struct Contact: Codable {
     }
     
     init(firstName: String, lastName: String?, company: String?, mobileNumbers: [MobileNumber]) {
-        
-        Contact.identityProvider += 1
-        
-        self.id = Contact.identityProvider
+        self.id = -1
         self.firstName = firstName
         self.lastName = lastName
         self.company = company

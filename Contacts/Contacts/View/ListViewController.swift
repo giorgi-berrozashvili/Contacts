@@ -20,22 +20,21 @@ class ListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        
+        var c = Contact(firstName: "cfds", lastName: nil, company: "comp", mobileNumbers: [
+            MobileNumber(description: "er", number: "1234")
+        ])
+        
     }
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.sections[section].items.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = viewModel.sections[indexPath.section].items[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: model.identificator, for: indexPath)
-        
-        if let cell = cell as? Configurable {
-            cell.configure(with: model)
-        }
-        return cell
+        return UITableViewCell()
     }
     
     
