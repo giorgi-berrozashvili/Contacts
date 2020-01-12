@@ -21,6 +21,7 @@ struct Contact: Codable {
     var company: String?
     var isFavorite: Bool
     var mobileNumbers: [MobileNumber]
+    
     var groupIdentificator: String {
         if let lastName = lastName {
             return String(lastName.first!)
@@ -31,6 +32,10 @@ struct Contact: Codable {
     }
     var imageInitials: String {
         return "\(firstName[0])\(lastName?[0] ?? "\0")"
+    }
+    
+    var fullName: String {
+        return "\(firstName) \(lastName ?? "")"
     }
     
     init(firstName: String, lastName: String?, company: String?, mobileNumbers: [MobileNumber]) {

@@ -1,5 +1,5 @@
 //
-//  DataProvider.swift
+//  ContactApi.swift
 //  Contacts
 //
 //  Created by Giorgi Berozashvili on 1/11/20.
@@ -7,27 +7,6 @@
 //
 
 import UIKit
-
-enum ErrorType: String {
-    case decode = "Could not decode"
-    case empty = "User defaults is empty"
-    case encode = "Could not encode contacts"
-    case unknown = "Unknown error occurred"
-    case notFound = "Such record was not found"
-}
-
-class ApiResponse<T> {
-    
-    var result: T?
-    var error: ErrorType?
-    
-    init(with data: T?) {
-        self.result = data
-    }
-    init(withError error: ErrorType) {
-        self.error = error
-    }
-}
 
 class ContactApi {
     static func get(_ completion: @escaping (ApiResponse<[Contact]>) -> ()) {
@@ -60,6 +39,7 @@ class ContactApi {
                     return
                 }
                 UserDefaults.standard.set(data, forKey: ContactKey)
+                UserDefaults.standard.synchronize()
                 completion(nil)
             }
             else {
@@ -75,6 +55,7 @@ class ContactApi {
                             return
                         }
                         UserDefaults.standard.set(data, forKey: ContactKey)
+                        UserDefaults.standard.synchronize()
                         completion(nil)
                     }
                 }
@@ -115,6 +96,7 @@ class ContactApi {
                     return
                 }
                 UserDefaults.standard.set(data, forKey: ContactKey)
+                UserDefaults.standard.synchronize()
                 completion(nil)
             }
             else {
@@ -146,5 +128,6 @@ class ContactApi {
     
     static func clear() {
         UserDefaults.standard.set(nil, forKey: ContactKey)
+        UserDefaults.standard.synchronize()
     }
 }

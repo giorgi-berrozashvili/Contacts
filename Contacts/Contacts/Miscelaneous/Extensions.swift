@@ -26,3 +26,7 @@ func calculateProperWidth(with seValue: CGFloat) -> CGFloat {
 extension StringProtocol {
     subscript(offset: Int) -> Character { self[index(startIndex, offsetBy: offset)] }
 }
+
+func notifyUser(_ text: String) {
+    print(text)
+}
