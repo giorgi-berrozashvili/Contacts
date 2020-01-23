@@ -9,6 +9,8 @@
 import UIKit
 
 let ContactKey = "contact_key"
+let KeywordPList = "Keywords"
+let PlistType = "plist"
 
 struct iPhoneSE {
     static let width: CGFloat = 320
@@ -29,4 +31,53 @@ extension StringProtocol {
 
 func notifyUser(_ text: String) {
     print(text)
+}
+
+extension Array where Element == Section {
+    subscript(_ indexPath: IndexPath) -> CellItem {
+        return self[indexPath.section].items[indexPath.row]
+    }
+}
+
+extension Dictionary {
+    static func fromPropertyList(named list: String) -> Dictionary<String, [String: String]>? {
+        var ns: NSDictionary?
+        if let path = Bundle.main.path(forResource: list, ofType: PlistType) {
+           ns = NSDictionary(contentsOfFile: path)
+        }
+        return ns as? [String: [String: String]]
+    }
+}
+
+extension UILabel {
+    @IBInspectable var fontSize: CGFloat {
+        get {
+            return self.font.pointSize
+        }
+        set {
+            self.font = UIFont(name: font.familyName, size: calculateProperWidth(with: newValue))
+        }
+    }
+}
+
+extension UITextField {
+    @IBInspectable var fontSize: CGFloat {
+        get {
+            return self.font?.pointSize ?? 0
+        }
+        set {
+            self.font = UIFont(name: font?.familyName ?? "", size: calculateProperWidth(with: newValue))
+        }
+    }
+}
+
+extension UIButton {
+    @IBInspectable var titleFontSize: CGFloat {
+        get {
+            return self.titleLabel?.font.pointSize ?? 0
+        }
+        set {
+            self.titleLabel?.font = UIFont(name: titleLabel?.font.familyName ?? "", size: calculateProperWidth(with: newValue))
+        }
+    }
 }

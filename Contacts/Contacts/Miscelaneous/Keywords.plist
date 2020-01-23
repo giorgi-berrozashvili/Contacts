@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContactKeywords</key>
+	<dict>
+		<key>filledStar</key>
+		<string>star.fill</string>
+		<key>star</key>
+		<string>star</string>
+		<key>deleteWithSwipe</key>
+		<string>Tap to delete this contact</string>
+	</dict>
+</dict>
+</plist>

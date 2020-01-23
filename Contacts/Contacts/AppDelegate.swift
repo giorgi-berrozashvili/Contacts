@@ -15,6 +15,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        /*
+        ContactApi.add(contact: Contact(
+            firstName: "John",
+            lastName: "Doe",
+            company: "Apple",
+            mobileNumbers: [
+                MobileNumber(description: "Geocell", number: "505-45-34-11"),
+                MobileNumber(description: "Magti", number: "501-23-23-23")
+            ]
+        ), { _ in })
+        
+        ContactApi.add(contact: Contact(
+            firstName: "Jane",
+            lastName: nil,
+            company: "Apple",
+            mobileNumbers: [
+                MobileNumber(description: "Geocell", number: "505-45-34-11"),
+                MobileNumber(description: "Magti", number: "501-23-23-23")
+            ]
+        ), { _ in })
+        
+        ContactApi.add(contact: Contact(
+            firstName: "Julia",
+            lastName: "Doe",
+            company: "Apple",
+            mobileNumbers: [
+                MobileNumber(description: "Geocell", number: "505-45-34-11"),
+                MobileNumber(description: "Magti", number: "501-23-23-23")
+            ]
+        ), { _ in })
+        
+        ContactApi.add(contact: Contact(
+            firstName: "Aaron",
+            lastName: nil,
+            company: "Apple",
+            mobileNumbers: [
+                MobileNumber(description: "Geocell", number: "505-45-34-11"),
+                MobileNumber(description: "Magti", number: "501-23-23-23")
+            ]
+        ), { _ in })*/
         return true
     }
 

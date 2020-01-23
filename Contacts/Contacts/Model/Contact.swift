@@ -23,11 +23,11 @@ struct Contact: Codable {
     var mobileNumbers: [MobileNumber]
     
     var groupIdentificator: String {
-        if let lastName = lastName {
+        if let lastName = lastName, lastName.count > 0 {
             return String(lastName.first!)
         }
         else {
-            return String(firstName.first!)
+            return String(firstName.first ?? "\0")
         }
     }
     var imageInitials: String {

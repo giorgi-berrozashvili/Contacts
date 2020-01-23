@@ -6,95 +6,57 @@
 //  Copyright © 2020 GB. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ContactActor {
     
-    var viewController: ListViewController
+    var viewController: ContactListViewController
     
-    init(with viewController: ListViewController) {
+    init(with viewController: ContactListViewController) {
         self.viewController = viewController
     }
     
-    func fetchContactsFromDataProvider(onlyFavorites: Bool = false, _ completion: @escaping (ApiResponse<[Section]>) -> ()) {
-        var sections: [Section] = []
-        
-        ContactApi.get({ response in
-            if let result = response.result {
-                
-                var sorted = result.sorted(by: { (a, b) in a.id < b.id })
-                if onlyFavorites {
-                    sorted = sorted.filter({ contact in contact.isFavorite })
-                }
-                sorted = sorted.sorted(by: { (a, b) in
-                    if let last1 = a.lastName, let last2 = b.lastName {
-                        if last1 == last2 {
-                            return a.firstName < b.firstName
-                        }
-                        return last1 < last2
-                    }
-                    if let last1 = a.lastName {
-                        return last1 < b.firstName
-                    }
-                    if let last2 = b.lastName {
-                        return a.firstName < last2
-                    }
-                    return a.firstName < b.firstName
-                })
-                
-                var groupedContacts = [String: [Contact]]()
-                sorted.forEach({ contact in
-                    if groupedContacts[contact.groupIdentificator] != nil {
-                        groupedContacts[contact.groupIdentificator]?.append(contact)
-                    }
-                    else {
-                        groupedContacts[contact.groupIdentificator] = [contact]
-                    }
-                })
-                
-                groupedContacts.keys.sorted().forEach({ key in
-                    let contacts = groupedContacts[key]!
-                    sections.append( Section(
-                        items: contacts.map({ c in
-                            ContactCellViewModel(contactId: c.id, title: c.fullName, isFavorite: c.isFavorite)
-                        }),
-                        title: key
-                    ))
-                })
-                completion(ApiResponse(with: sections))
-            }
-            else if let error = response.error {
-                completion(ApiResponse(withError: error))
-            }
-            else {
-                completion(ApiResponse(withError: .unknown))
-            }
-        })
-        
-        
-    }
-    
-    func didSelectRowWith(data: CellItem) {
-        guard let data = data as? ContactCellViewModel else { return }
-        
+    func fetchContacts(onlyFavorites: Bool = false, _ completion: @escaping (ApiResponse<[Section]>) -> ()) {
+        ContactWorker.fetchContacts(onlyFavorites: onlyFavorites, completion)
     }
     
     func didTapCellFavoriteButtonWith(id: Int) {
-        ContactApi.get(by: id, { response in
-            if var contact = response.result {
-                contact.isFavorite = !contact.isFavorite
-                ContactApi.replace(by: id, with: contact, { replaceResponse in
-                    if let error = replaceResponse {
-                        notifyUser(error.rawValue)
-                    }
-                    else {
-                        self.viewController.refresh()
-                    }
-                })
+        ContactWorker.toggleContactFavoriteStateBy(id: id, { response in
+            if let error = response {
+                notifyUser(error.rawValue)
             }
             else {
-                notifyUser(response.error!.rawValue)
+                self.viewController.refresh()
             }
         })
+    }
+    
+    func didSelectContactCell(with cellItem: CellItem) {
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let controller = storyBoard.instantiateViewController(identifier: "ContactDetail")
+        viewController.present(controller, animated: true)
+    }
+    
+    func showNewContactViewController() {
+        let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+        let controller = storyBoard.instantiateViewController(identifier: "ContactDetail")
+        viewController.present(controller, animated: true)
+        Notificator.addTask(with: "refresh.list.controller", { [weak self] in
+            self?.viewController.refresh()
+        })
+    }
+    
+    func deleteRow(with model: CellItem) {
+        if let model = model as? ContactCellViewModel {
+            ContactWorker.removeContactBy(id: model.contactId, { response in
+                if let response = response {
+                    notifyUser(response.rawValue)
+                }
+                else {
+                    self.viewController.refresh()
+                }
+            })
+        }
+        
     }
 }

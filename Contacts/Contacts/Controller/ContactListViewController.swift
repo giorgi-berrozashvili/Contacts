@@ -8,11 +8,10 @@
 
 import UIKit
 
-class ListViewController: UIViewController {
-
+class ContactListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var viewModel: ListViewModel!
+    var viewModel: ContactViewModel!
     var showingFavorites = false
     
     override func viewDidLoad() {
@@ -24,11 +23,11 @@ class ListViewController: UIViewController {
     
     func prepareActorAndViewModel() {
         let actor = ContactActor(with: self)
-        viewModel = ListViewModel(with: actor)
+        viewModel = ContactViewModel(with: actor)
     }
     
     func refresh() {
-        viewModel = ListViewModel(with: viewModel.actor, onlyFavorites: showingFavorites)
+        viewModel = ContactViewModel(with: viewModel.actor, onlyFavorites: showingFavorites)
         tableView.reloadData()
     }
     
@@ -36,14 +35,18 @@ class ListViewController: UIViewController {
         showingFavorites = !showingFavorites
         refresh()
         sender.setImage(
-            showingFavorites ? UIImage(systemName: "star.fill")
-                             : UIImage(systemName: "star"),
+            showingFavorites ? UIImage(systemName: viewModel.keywords.filledStar)
+                             : UIImage(systemName: viewModel.keywords.star),
             for: .normal
         )
     }
+    
+    @IBAction func tappedAdd(_ sender: UIButton) {
+        viewModel.actor.showNewContactViewController()
+    }
 }
 
-extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func registerTableView() {
         
@@ -58,6 +61,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cellItems.forEach({ item in
             tableView.register(UINib(nibName: item.nibName, bundle: nil), forCellReuseIdentifier: item.identificator)
         })
+        tableView.register(UINib(nibName: "ContactInputCell", bundle: nil), forCellReuseIdentifier: "NewContactInputCell")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -65,7 +69,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return viewModel.sections[section].title.uppercased()
+        return viewModel.sections[section].title?.uppercased()
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -84,7 +88,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = viewModel.sections[indexPath.section].items[indexPath.row]
+        let model = viewModel.sections[indexPath]
         let cell = tableView.dequeueReusableCell(withIdentifier: model.identificator, for: indexPath)
         cell.selectionStyle = .none
         if var cell = cell as? Configurable {
@@ -97,15 +101,29 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return viewModel.sections[indexPath.section].items[indexPath.row].height
+        return viewModel.sections[indexPath].height
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            viewModel.actor.deleteRow(with: viewModel.sections[indexPath])
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return viewModel.keywords.deleteWithSwipe
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.didSelectRowAt(indexPath)
+        viewModel.actor.didSelectContactCell(with: viewModel.sections[indexPath])
     }
 }
 
-extension ListViewController: ContactCellDelegate {
+extension ContactListViewController: ContactCellDelegate {
     func didTapStarButton(_ id: Int) {
         viewModel.actor.didTapCellFavoriteButtonWith(id: id)
     }
