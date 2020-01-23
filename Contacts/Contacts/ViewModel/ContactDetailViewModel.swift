@@ -11,19 +11,17 @@ import Foundation
 class ContactDetailViewModel {
     var sections: [Section] = []
     var actor: ContactDetailActor!
-    /*
+    var contactId: Int = -2
+    
     init(with actor: ContactDetailActor) {
         self.actor = actor
-        self.actor.fetchContacts(, { [weak self] response in
-            guard let self = self else { return }
+        actor.fetchDetailView(with: contactId, { response in
             if let result = response.result {
                 self.sections = result
-                self.loadedOnlyFavorites = onlyFavorites
             }
             else {
                 notifyUser(response.error!.rawValue)
             }
         })
     }
-    */
 }

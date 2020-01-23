@@ -33,6 +33,11 @@ func notifyUser(_ text: String) {
     print(text)
 }
 
+func makeRounded(_ view: UIView) {
+    //view.layer.cornerRadius = view.layer.frame.height / 2
+    //view.layer.masksToBounds = false
+}
+
 extension Array where Element == Section {
     subscript(_ indexPath: IndexPath) -> CellItem {
         return self[indexPath.section].items[indexPath.row]

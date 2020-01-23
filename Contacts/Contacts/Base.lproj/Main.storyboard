@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="338" y="-8"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact Detail Controller-->
         <scene sceneID="sub-ap-7QF">
             <objects>
-                <viewController id="KBh-YO-9ki" sceneMemberID="viewController">
+                <viewController id="KBh-YO-9ki" customClass="ContactDetailController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FrQ-EN-wZV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,6 +102,9 @@
                         <viewLayoutGuide key="safeArea" id="OWz-w9-3Yn"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="bookmarks" id="yi2-le-JuW"/>
+                    <connections>
+                        <outlet property="tableView" destination="lbM-Ku-enw" id="PDD-7t-ZJU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2YI-b7-6SI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

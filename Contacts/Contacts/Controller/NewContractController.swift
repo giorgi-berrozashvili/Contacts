@@ -22,13 +22,13 @@ class NewContractController: UIViewController {
         prepareActorAndViewModel()
         registerTableView()
         
+        cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
+        doneButton.addTarget(self, action: #selector(didTapDoneButton), for: .touchUpInside)
     }
     
     func prepareActorAndViewModel() {
         let actor = NewContactActor(with: self)
         viewModel = NewContactViewModel(with: actor)
-        cancelButton.addTarget(self, action: #selector(didTapCancelButton), for: .touchUpInside)
-        doneButton.addTarget(self, action: #selector(didTapDoneButton), for: .touchUpInside)
     }
     
     @objc func didTapCancelButton() {

@@ -14,4 +14,10 @@ class ContactDetailActor {
     init(with viewController: ContactDetailController) {
         self.viewController = viewController
     }
+    
+    func fetchDetailView(with id: Int, _ completion: @escaping (ApiResponse<[Section]>) -> ()) {
+        ContactDetailWorker.fetchContactDetailView(with: id, { response in
+            completion(response)
+        })
+    }
 }

@@ -10,17 +10,23 @@ import UIKit
 
 class ContactDetailController: UIViewController {
     
-    
-    
+    @IBOutlet weak var tableView: UITableView!
     var viewModel: ContactDetailViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        prepareActorAndViewModel()
+        registerTableView()
+    }
+    
+    
+    func prepareActorAndViewModel() {
+        let actor = ContactDetailActor(with: self)
+        viewModel = ContactDetailViewModel(with: actor)
     }
 }
-/*
+
 extension ContactDetailController: UITableViewDelegate, UITableViewDataSource {
     
     func registerTableView() {
@@ -38,14 +44,24 @@ extension ContactDetailController: UITableViewDelegate, UITableViewDataSource {
         })
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return viewModel.sections[section].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let model = viewModel.sections[indexPath]
+        let cell = tableView.dequeueReusableCell(withIdentifier: model.identificator, for: indexPath)
+        if var cell = cell as? Configurable {
+            cell.configurator = model
+        }
+        cell.selectionStyle = .none
+        return cell
     }
     
     
 }
-*/
+

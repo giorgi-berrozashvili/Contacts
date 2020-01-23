@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		240B42DF23D9A485004F6544 /* Notificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B42DE23D9A485004F6544 /* Notificator.swift */; };
+		240B42E523D9B6CD004F6544 /* ContactInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B42E323D9B6CD004F6544 /* ContactInfoCell.swift */; };
+		240B42E623D9B6CD004F6544 /* ContactInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240B42E423D9B6CD004F6544 /* ContactInfoCell.xib */; };
+		240B42E923D9C6ED004F6544 /* ContactDetailFunctionalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B42E723D9C6ED004F6544 /* ContactDetailFunctionalCell.swift */; };
+		240B42EA23D9C6ED004F6544 /* ContactDetailFunctionalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240B42E823D9C6ED004F6544 /* ContactDetailFunctionalCell.xib */; };
+		240B42ED23D9C802004F6544 /* BaseReusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B42EC23D9C802004F6544 /* BaseReusable.swift */; };
+		240B42F023D9C8E5004F6544 /* ContactDetailButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240B42EF23D9C8E5004F6544 /* ContactDetailButtonView.xib */; };
+		240B42F223D9CC22004F6544 /* ContactDetailButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B42F123D9CC22004F6544 /* ContactDetailButtonView.swift */; };
+		240B42F423D9CD16004F6544 /* ContactDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B42F323D9CD16004F6544 /* ContactDetails.swift */; };
+		240B42F623D9D49B004F6544 /* ContactDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B42F523D9D49B004F6544 /* ContactDetailWorker.swift */; };
 		240EDA6E23D6F87500500DF3 /* ContactInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240EDA6C23D6F87500500DF3 /* ContactInputCell.swift */; };
 		240EDA6F23D6F87500500DF3 /* ContactInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240EDA6D23D6F87500500DF3 /* ContactInputCell.xib */; };
 		24321C9D23CC8CFF00717725 /* ContactDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24321C9C23CC8CFF00717725 /* ContactDetailController.swift */; };
@@ -44,6 +53,15 @@
 
 /* Begin PBXFileReference section */
 		240B42DE23D9A485004F6544 /* Notificator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notificator.swift; sourceTree = "<group>"; };
+		240B42E323D9B6CD004F6544 /* ContactInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInfoCell.swift; sourceTree = "<group>"; };
+		240B42E423D9B6CD004F6544 /* ContactInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactInfoCell.xib; sourceTree = "<group>"; };
+		240B42E723D9C6ED004F6544 /* ContactDetailFunctionalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailFunctionalCell.swift; sourceTree = "<group>"; };
+		240B42E823D9C6ED004F6544 /* ContactDetailFunctionalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailFunctionalCell.xib; sourceTree = "<group>"; };
+		240B42EC23D9C802004F6544 /* BaseReusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseReusable.swift; sourceTree = "<group>"; };
+		240B42EF23D9C8E5004F6544 /* ContactDetailButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailButtonView.xib; sourceTree = "<group>"; };
+		240B42F123D9CC22004F6544 /* ContactDetailButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailButtonView.swift; sourceTree = "<group>"; };
+		240B42F323D9CD16004F6544 /* ContactDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetails.swift; sourceTree = "<group>"; };
+		240B42F523D9D49B004F6544 /* ContactDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailWorker.swift; sourceTree = "<group>"; };
 		240EDA6C23D6F87500500DF3 /* ContactInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInputCell.swift; sourceTree = "<group>"; };
 		240EDA6D23D6F87500500DF3 /* ContactInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactInputCell.xib; sourceTree = "<group>"; };
 		24321C9C23CC8CFF00717725 /* ContactDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailController.swift; sourceTree = "<group>"; };
@@ -116,8 +134,22 @@
 		240B42E223D9B579004F6544 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				240B42E323D9B6CD004F6544 /* ContactInfoCell.swift */,
+				240B42E423D9B6CD004F6544 /* ContactInfoCell.xib */,
+				240B42E723D9C6ED004F6544 /* ContactDetailFunctionalCell.swift */,
+				240B42E823D9C6ED004F6544 /* ContactDetailFunctionalCell.xib */,
 			);
 			path = Details;
+			sourceTree = "<group>";
+		};
+		240B42EB23D9C7F4004F6544 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				240B42EC23D9C802004F6544 /* BaseReusable.swift */,
+				240B42EF23D9C8E5004F6544 /* ContactDetailButtonView.xib */,
+				240B42F123D9CC22004F6544 /* ContactDetailButtonView.swift */,
+			);
+			path = Reusable;
 			sourceTree = "<group>";
 		};
 		248A41D423C9C15800517AD3 = {
@@ -162,6 +194,7 @@
 			children = (
 				248A41F523C9C35100517AD3 /* Contact.swift */,
 				248A41FC23C9D0C600517AD3 /* List.swift */,
+				240B42F323D9CD16004F6544 /* ContactDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +202,7 @@
 		248A41F723C9C68400517AD3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				240B42EB23D9C7F4004F6544 /* Reusable */,
 				248A420423C9D66400517AD3 /* Cells */,
 			);
 			path = View;
@@ -199,8 +233,8 @@
 		248A420423C9D66400517AD3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				240B42E123D9B560004F6544 /* New Contact */,
 				240B42E023D9B54E004F6544 /* List */,
+				240B42E123D9B560004F6544 /* New Contact */,
 				240B42E223D9B579004F6544 /* Details */,
 			);
 			path = Cells;
@@ -239,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				24BFFB4923CDDD6F0079ADF5 /* ContactWorker.swift */,
+				240B42F523D9D49B004F6544 /* ContactDetailWorker.swift */,
 				243A62E223D0A283005534D2 /* NewContactWorker.swift */,
 			);
 			path = Worker;
@@ -302,13 +337,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				240B42EA23D9C6ED004F6544 /* ContactDetailFunctionalCell.xib in Resources */,
 				24BFFB5223CE05B60079ADF5 /* Keywords.plist in Resources */,
 				240EDA6F23D6F87500500DF3 /* ContactInputCell.xib in Resources */,
+				240B42E623D9B6CD004F6544 /* ContactInfoCell.xib in Resources */,
 				248A420823C9D67E00517AD3 /* ContactCell.xib in Resources */,
 				248A41ED23C9C15900517AD3 /* LaunchScreen.storyboard in Resources */,
 				24321CA923CC91E300717725 /* AddPhoneContactCell.xib in Resources */,
 				248A41EA23C9C15900517AD3 /* Assets.xcassets in Resources */,
 				24321CA123CC8EC700717725 /* ContactImageCell.xib in Resources */,
+				240B42F023D9C8E5004F6544 /* ContactDetailButtonView.xib in Resources */,
 				248A41E823C9C15800517AD3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,8 +359,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				248A420723C9D67E00517AD3 /* ContactCell.swift in Sources */,
+				240B42F423D9CD16004F6544 /* ContactDetails.swift in Sources */,
 				243A62E323D0A283005534D2 /* NewContactWorker.swift in Sources */,
 				248A41F623C9C35100517AD3 /* Contact.swift in Sources */,
+				240B42E923D9C6ED004F6544 /* ContactDetailFunctionalCell.swift in Sources */,
 				24321C9D23CC8CFF00717725 /* ContactDetailController.swift in Sources */,
 				243A62E123D0A269005534D2 /* NewContactActor.swift in Sources */,
 				243A62DB23D09F7B005534D2 /* ContactDetailActor.swift in Sources */,
@@ -330,6 +370,7 @@
 				240B42DF23D9A485004F6544 /* Notificator.swift in Sources */,
 				24BFFB4C23CDFD970079ADF5 /* Keywords.swift in Sources */,
 				243A62DF23D0A247005534D2 /* NewContactViewModel.swift in Sources */,
+				240B42ED23D9C802004F6544 /* BaseReusable.swift in Sources */,
 				248A420D23CA186700517AD3 /* ContactApi.swift in Sources */,
 				248A41E123C9C15800517AD3 /* AppDelegate.swift in Sources */,
 				248A420023C9D31F00517AD3 /* ContactViewModel.swift in Sources */,
@@ -338,12 +379,15 @@
 				24321CAB23CC936000717725 /* ContactDetailViewModel.swift in Sources */,
 				248A41FD23C9D0C600517AD3 /* List.swift in Sources */,
 				249910F523CB1B9800599832 /* API Response.swift in Sources */,
+				240B42F223D9CC22004F6544 /* ContactDetailButtonView.swift in Sources */,
+				240B42E523D9B6CD004F6544 /* ContactInfoCell.swift in Sources */,
 				243A62DD23D0A1A8005534D2 /* NewContractController.swift in Sources */,
 				249910FC23CB2B2500599832 /* ContactActor.swift in Sources */,
 				248A420A23CA0C5200517AD3 /* CustomCodable.swift in Sources */,
 				240EDA6E23D6F87500500DF3 /* ContactInputCell.swift in Sources */,
 				248A41E323C9C15800517AD3 /* SceneDelegate.swift in Sources */,
 				24321CA023CC8EC700717725 /* ContactImageCell.swift in Sources */,
+				240B42F623D9D49B004F6544 /* ContactDetailWorker.swift in Sources */,
 				248A420323C9D5E100517AD3 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
