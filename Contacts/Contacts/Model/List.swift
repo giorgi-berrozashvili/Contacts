@@ -12,6 +12,13 @@ protocol CellItem {
     var height: CGFloat { get }
     var identificator: String { get }
     var nibName: String { get }
+    var hasSeparator: Bool { get }
+}
+
+extension CellItem {
+    var hasSeparator: Bool {
+        return true
+    }
 }
 
 protocol Objectable: AnyObject { }
@@ -112,49 +119,5 @@ class ContactCellViewModel: CellItem {
         self.contactId = contactId
         self.title = title
         self.isFavorite = isFavorite
-    }
-}
-
-class ContactDetailHeaderCellViewModel: CellItem {
-    var height: CGFloat {
-        return calculateProperHeight(with: 156)
-    }
-    
-    var identificator: String {
-        return "ContactInfoCell"
-    }
-    
-    var nibName: String {
-        return "ContactInfoCell"
-    }
-    
-    var profileImage: UIImage?
-    var username: String
-    var company: String?
-    
-    init(profileImage: UIImage?, username: String, company: String?) {
-        self.profileImage = profileImage
-        self.username = username
-        self.company = company
-    }
-}
-
-class ContactDetailFunctionalCellViewModel: CellItem {
-    var height: CGFloat {
-        return calculateProperHeight(with: 56)
-    }
-    
-    var identificator: String {
-        return "ContactDetailFunctionalCell"
-    }
-    
-    var nibName: String {
-        return "ContactDetailFunctionalCell"
-    }
-    
-    var buttonModels: [ContactDetailButtonViewModel]
-    
-    init(buttonModels: [ContactDetailButtonViewModel]) {
-        self.buttonModels = buttonModels
     }
 }

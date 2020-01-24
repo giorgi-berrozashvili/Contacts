@@ -11,9 +11,8 @@ import Foundation
 class ContactDetailViewModel {
     var sections: [Section] = []
     var actor: ContactDetailActor!
-    var contactId: Int = -2
     
-    init(with actor: ContactDetailActor) {
+    init(with actor: ContactDetailActor, contactId: Int) {
         self.actor = actor
         actor.fetchDetailView(with: contactId, { response in
             if let result = response.result {

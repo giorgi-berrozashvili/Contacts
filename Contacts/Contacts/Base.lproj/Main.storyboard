@@ -82,7 +82,7 @@
         <!--Contact Detail Controller-->
         <scene sceneID="sub-ap-7QF">
             <objects>
-                <viewController id="KBh-YO-9ki" customClass="ContactDetailController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactDetail" id="KBh-YO-9ki" customClass="ContactDetailController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FrQ-EN-wZV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -113,7 +113,7 @@
         <!--New Contract Controller-->
         <scene sceneID="TD8-8a-b2a">
             <objects>
-                <viewController storyboardIdentifier="ContactDetail" id="gJt-eR-nOh" customClass="NewContractController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewContact" id="gJt-eR-nOh" customClass="NewContractController" customModule="Contacts" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SbI-sF-FSc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

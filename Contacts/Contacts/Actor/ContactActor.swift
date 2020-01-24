@@ -34,14 +34,19 @@ class ContactActor {
     func didSelectContactCell(with cellItem: CellItem) {
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
         let controller = storyBoard.instantiateViewController(identifier: "ContactDetail")
+        if let cell = cellItem as? ContactCellViewModel {
+            if var bindable = controller as? Bindable {
+                bindable.binder = cell.contactId
+            }
+        }
         viewController.present(controller, animated: true)
     }
     
     func showNewContactViewController() {
         let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
-        let controller = storyBoard.instantiateViewController(identifier: "ContactDetail")
+        let controller = storyBoard.instantiateViewController(identifier: "NewContact")
         viewController.present(controller, animated: true)
-        Notificator.addTask(with: "refresh.list.controller", { [weak self] in
+        Notificator.addTask(with: "refresh.list.controller", { [weak self] _ in
             self?.viewController.refresh()
         })
     }

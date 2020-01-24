@@ -8,22 +8,26 @@
 
 import UIKit
 
-class ContactDetailController: UIViewController {
+class ContactDetailController: UIViewController, Bindable {
     
     @IBOutlet weak var tableView: UITableView!
     var viewModel: ContactDetailViewModel!
+    var binder: Any!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         prepareActorAndViewModel()
         registerTableView()
+        
     }
     
     
     func prepareActorAndViewModel() {
         let actor = ContactDetailActor(with: self)
-        viewModel = ContactDetailViewModel(with: actor)
+        let id = binder as? Int
+        viewModel = ContactDetailViewModel(with: actor, contactId: id ?? -2)
+        
     }
 }
 
@@ -59,9 +63,13 @@ extension ContactDetailController: UITableViewDelegate, UITableViewDataSource {
             cell.configurator = model
         }
         cell.selectionStyle = .none
+        cell.toggleSeparator(model.hasSeparator)
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return viewModel.sections[indexPath].height
+    }
     
 }
 

@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         contact.id = -2
         
         ContactApi.add(contact: contact, { _ in })
-        
+        /
         ContactApi.add(contact: Contact(
             firstName: "Jane",
             lastName: nil,

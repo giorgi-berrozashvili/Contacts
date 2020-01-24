@@ -34,8 +34,8 @@ func notifyUser(_ text: String) {
 }
 
 func makeRounded(_ view: UIView) {
-    //view.layer.cornerRadius = view.layer.frame.height / 2
-    //view.layer.masksToBounds = false
+    //view.layer.cornerRadius = view.bounds.height / 2
+    //view.clipsToBounds = true
 }
 
 extension Array where Element == Section {
@@ -85,4 +85,19 @@ extension UIButton {
             self.titleLabel?.font = UIFont(name: titleLabel?.font.familyName ?? "", size: calculateProperWidth(with: newValue))
         }
     }
+}
+
+extension UITableViewCell {
+    func toggleSeparator(_ value: Bool) {
+        if value {
+            separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+        else {
+            separatorInset = UIEdgeInsets(top: 0, left: bounds.size.width, bottom: 0, right: 0)
+        }
+    }
+}
+
+protocol Bindable {
+    var binder: Any! { get set }
 }

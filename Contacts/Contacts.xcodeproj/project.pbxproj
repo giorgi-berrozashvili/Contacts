@@ -19,6 +19,8 @@
 		240B42F623D9D49B004F6544 /* ContactDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240B42F523D9D49B004F6544 /* ContactDetailWorker.swift */; };
 		240EDA6E23D6F87500500DF3 /* ContactInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240EDA6C23D6F87500500DF3 /* ContactInputCell.swift */; };
 		240EDA6F23D6F87500500DF3 /* ContactInputCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 240EDA6D23D6F87500500DF3 /* ContactInputCell.xib */; };
+		241F202B23DAD3B3008C476E /* ContactDetailFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241F202923DAD3B3008C476E /* ContactDetailFieldCell.swift */; };
+		241F202C23DAD3B3008C476E /* ContactDetailFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 241F202A23DAD3B3008C476E /* ContactDetailFieldCell.xib */; };
 		24321C9D23CC8CFF00717725 /* ContactDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24321C9C23CC8CFF00717725 /* ContactDetailController.swift */; };
 		24321CA023CC8EC700717725 /* ContactImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24321C9E23CC8EC700717725 /* ContactImageCell.swift */; };
 		24321CA123CC8EC700717725 /* ContactImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24321C9F23CC8EC700717725 /* ContactImageCell.xib */; };
@@ -64,6 +66,8 @@
 		240B42F523D9D49B004F6544 /* ContactDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailWorker.swift; sourceTree = "<group>"; };
 		240EDA6C23D6F87500500DF3 /* ContactInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactInputCell.swift; sourceTree = "<group>"; };
 		240EDA6D23D6F87500500DF3 /* ContactInputCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactInputCell.xib; sourceTree = "<group>"; };
+		241F202923DAD3B3008C476E /* ContactDetailFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailFieldCell.swift; sourceTree = "<group>"; };
+		241F202A23DAD3B3008C476E /* ContactDetailFieldCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailFieldCell.xib; sourceTree = "<group>"; };
 		24321C9C23CC8CFF00717725 /* ContactDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailController.swift; sourceTree = "<group>"; };
 		24321C9E23CC8EC700717725 /* ContactImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactImageCell.swift; sourceTree = "<group>"; };
 		24321C9F23CC8EC700717725 /* ContactImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactImageCell.xib; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 				240B42E423D9B6CD004F6544 /* ContactInfoCell.xib */,
 				240B42E723D9C6ED004F6544 /* ContactDetailFunctionalCell.swift */,
 				240B42E823D9C6ED004F6544 /* ContactDetailFunctionalCell.xib */,
+				241F202923DAD3B3008C476E /* ContactDetailFieldCell.swift */,
+				241F202A23DAD3B3008C476E /* ContactDetailFieldCell.xib */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -343,6 +349,7 @@
 				240B42E623D9B6CD004F6544 /* ContactInfoCell.xib in Resources */,
 				248A420823C9D67E00517AD3 /* ContactCell.xib in Resources */,
 				248A41ED23C9C15900517AD3 /* LaunchScreen.storyboard in Resources */,
+				241F202C23DAD3B3008C476E /* ContactDetailFieldCell.xib in Resources */,
 				24321CA923CC91E300717725 /* AddPhoneContactCell.xib in Resources */,
 				248A41EA23C9C15900517AD3 /* Assets.xcassets in Resources */,
 				24321CA123CC8EC700717725 /* ContactImageCell.xib in Resources */,
@@ -384,6 +391,7 @@
 				243A62DD23D0A1A8005534D2 /* NewContractController.swift in Sources */,
 				249910FC23CB2B2500599832 /* ContactActor.swift in Sources */,
 				248A420A23CA0C5200517AD3 /* CustomCodable.swift in Sources */,
+				241F202B23DAD3B3008C476E /* ContactDetailFieldCell.swift in Sources */,
 				240EDA6E23D6F87500500DF3 /* ContactInputCell.swift in Sources */,
 				248A41E323C9C15800517AD3 /* SceneDelegate.swift in Sources */,
 				24321CA023CC8EC700717725 /* ContactImageCell.swift in Sources */,

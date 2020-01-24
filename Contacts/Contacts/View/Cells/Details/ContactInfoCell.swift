@@ -33,12 +33,12 @@ class ContactInfoCell: UITableViewCell {
     func prepareImage() {
         
         if profileImage.image == nil {
-            profileImage.image = UIImage(systemName: "person.fill")
+            profileImage.image = UIImage(systemName: "person.circle")
         }
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         profileImage.clipsToBounds = true
     }
-    
+
 }
 
 extension ContactInfoCell: Configurable {

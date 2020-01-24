@@ -10,13 +10,13 @@ import UIKit
 
 class Notificator {
     
-    private static var coordinator: [String: () -> ()] = [:]
+    private static var coordinator: [String: (Int) -> ()] = [:]
     
-    static func notify(with identifier: String) {
-        Notificator.coordinator[identifier]!()
+    static func notify(with identifier: String, value: Int = 0) {
+        Notificator.coordinator[identifier]!(value)
     }
     
-    static func addTask(with identifier: String, _ task: @escaping () -> ()) {
+    static func addTask(with identifier: String, _ task: @escaping (Int) -> ()) {
         Notificator.coordinator[identifier] = task
     }
 }
